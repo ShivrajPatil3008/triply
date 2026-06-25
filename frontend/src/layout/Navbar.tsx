@@ -127,6 +127,9 @@ export default function Navbar() {
 								? user.avatar.fileLocation
 								: "/favicon.png"
 						}
+						onError={(e) => {
+							(e.currentTarget as HTMLImageElement).src = "/favicon.png";
+						}}
 						onClick={() => setOpen(true)}
 						className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-gray-600 cursor-pointer hover:scale-105 transition"
 					/>
@@ -162,6 +165,9 @@ export default function Navbar() {
 
 							<img
 								src={avatarPreview || "/favicon.png"}
+								onError={(e) => {
+									(e.currentTarget as HTMLImageElement).src = "/favicon.png";
+								}}
 								className="w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full object-cover border"
 							/>
 

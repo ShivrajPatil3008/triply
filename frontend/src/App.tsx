@@ -1,7 +1,7 @@
 import { lazy, Suspense, useMemo } from "react";
 
-// import "./App.css";
-import "./index.css";
+import "./App.css";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

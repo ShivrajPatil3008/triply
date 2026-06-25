@@ -26,7 +26,7 @@ export default function ItineraryView() {
 	};
 
 	return (
-		<div className="relative min-h-screen bg-[#0b0f19] text-white px-4 md:px-6 py-4 md:py-6">
+		<div className="relative min-h-screen bg-[#0b0f19] text-white px-4  md:px-6 py-8 md:py-6">
 			<button
 				onClick={() => navigate("/dashboard")}
 				className="absolute top-3 right-3 md:top-4 md:right-4 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm bg-[#111827] border border-gray-700 rounded-md hover:bg-gray-800 transition"

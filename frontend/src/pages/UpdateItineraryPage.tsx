@@ -124,7 +124,7 @@ export default function UpdateItineraryPage() {
 	}
 
 	return (
-		<div className="relative min-h-screen flex items-start md:items-center justify-center bg-[#0b0f19] px-3 py-6 md:py-10 overflow-x-hidden overflow-y-auto">
+		<div className="relative min-h-screen flex items-start md:items-center justify-center bg-[#0b0f19] px-3 py-16 md:py-10 overflow-x-hidden overflow-y-auto">
 			<button
 				onClick={() => navigate("/dashboard")}
 				className="absolute top-3 right-3 md:top-4 md:right-4 px-3 py-1.5 text-xs md:text-sm bg-[#111827] border border-gray-700 rounded-md hover:bg-gray-800 transition cursor-pointer z-10 cursor-pointer"

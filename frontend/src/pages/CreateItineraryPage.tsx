@@ -79,7 +79,7 @@ export default function CreateItineraryPage() {
 	};
 
 	return (
-		<div className="relative min-h-screen flex items-start md:items-center justify-center bg-[#0b0f19] px-4 py-6 md:py-10 overflow-x-hidden">
+		<div className="relative min-h-screen flex items-start md:items-center justify-center bg-[#0b0f19] px-3 py-16 md:py-10 overflow-x-hidden overflow-y-auto">
 			<button
 				onClick={() => navigate("/dashboard")}
 				className="absolute top-3 right-3 md:top-4 md:right-4 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm bg-[#111827] border border-gray-700 rounded-md hover:bg-gray-800 transition"

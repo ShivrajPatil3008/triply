@@ -144,7 +144,7 @@ export default function Navbar() {
 
 			{/* MODAL */}
 			{open && (
-				<div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
+				<div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-200">
 					<div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-[#111827] border border-gray-700 rounded-xl p-5 text-left max-h-[90vh] overflow-y-auto">
 						<h2 className="text-white text-lg mb-4">Update Profile</h2>
 
@@ -261,11 +261,11 @@ export default function Navbar() {
 							</div>
 
 							{/* ACTIONS */}
-							<div className="flex flex-col md:flex-row gap-2 pt-2">
+							<div className="flex flex-col md:flex-row gap-3 pt-4">
 								<button
 									type="button"
 									onClick={() => setOpen(false)}
-									className="w-1/2 py-3 bg-gray-700 text-white rounded-md cursor-pointer"
+									className="w-full md:w-1/2 py-3 bg-gray-700 text-white rounded-md cursor-pointer"
 								>
 									Cancel
 								</button>

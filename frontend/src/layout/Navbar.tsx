@@ -146,7 +146,9 @@ export default function Navbar() {
 			{open && (
 				<div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-200">
 					<div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-[#111827] border border-gray-700 rounded-xl p-5 text-left max-h-[90vh] overflow-y-auto">
-						<h2 className="text-white text-lg mb-4">Update Profile</h2>
+						<h2 className="text-white text-lg mb-4 text-center ">
+							Update Profile
+						</h2>
 
 						{/* AVATAR (pencil TOP only) */}
 						<div className="flex justify-center mb-4 relative">

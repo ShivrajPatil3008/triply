@@ -76,6 +76,12 @@ export default function Dashboard() {
 			{/* LIST */}
 			{isLoading ? (
 				<p className="text-gray-400 text-sm">Loading...</p>
+			) : itineraries.length === 0 ? (
+				<div className="flex items-center justify-center min-h-[50vh]">
+					<p className="text-gray-400 text-base md:text-lg text-center">
+						Add your first trip by clicking on "+ Add Trip" button
+					</p>
+				</div>
 			) : (
 				<div className="flex flex-col gap-2 md:gap-2.5">
 					{itineraries.map((item) => (

@@ -73,6 +73,26 @@ This is **not a production-grade application**. Several areas can be further imp
 
 The current implementation represents the best possible solution within the given assessment timeline while leaving room for future enhancements and production-level optimizations.
 
+## AI Model Availability Notice
+
+While using the application, you may occasionally encounter an error like:
+
+```json
+{
+	"error": {
+		"code": 503,
+		"message": "This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.",
+		"status": "UNAVAILABLE"
+	}
+}
+```
+
+This issue occurs due to temporary high traffic or service limitations on the Google Gemini AI API. The model may become unavailable when usage demand is high or when API rate limits are reached.
+
+Since this project uses free-tier Gemini API models, such interruptions are expected occasionally and are not related to any bug in the application.
+
+If this happens, simply wait for a short time and retry the request.
+
 ## Contact
 
 If you have any questions, suggestions, or feedback, feel free to reach out:
@@ -81,3 +101,7 @@ If you have any questions, suggestions, or feedback, feel free to reach out:
 - **Email:** patilshivraj3008@gmail.com
 - **LinkedIn:** https://in.linkedin.com/in/patil-shivraj
 - **Portfolio:** https://shivraj-patil.onrender.com
+
+```
+
+```

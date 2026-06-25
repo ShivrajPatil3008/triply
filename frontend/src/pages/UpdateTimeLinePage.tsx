@@ -49,7 +49,7 @@ export default function UpdateTimeLinePage() {
 	if (isLoading) return <p className="text-white p-4">Loading...</p>;
 
 	return (
-		<div className="relative min-h-screen bg-[#0b0f19] text-white px-6 py-6">
+		<div className="relative min-h-screen bg-[#0b0f19] text-white px-6 py-25">
 			<button
 				onClick={() => navigate("/dashboard")}
 				className="absolute top-4 right-4 px-3 py-2 text-xs bg-[#111827] border border-gray-700 rounded hover:bg-gray-800"
@@ -59,7 +59,10 @@ export default function UpdateTimeLinePage() {
 			{/* SAVE BUTTON */}
 			<button
 				onClick={handleSave}
-				className="mb-4 px-3 py-1 text-xs bg-green-600 rounded"
+				className="mb-4 px-5 py-2 text-sm md:text-base font-medium rounded-lg 
+	bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 
+	hover:from-purple-500 hover:via-purple-400 hover:to-fuchsia-500 
+	transition text-white shadow-md shadow-purple-900/30 cursor-pointer"
 			>
 				Save Timeline
 			</button>

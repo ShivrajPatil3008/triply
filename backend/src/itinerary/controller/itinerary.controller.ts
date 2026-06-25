@@ -242,10 +242,6 @@ export const updateTimeline = async (
 			throw new Error("Itinerary id is required");
 		}
 
-		// if (!cleanTimeLine || !Array.isArray(cleanTimeLine)) {
-		// 	throw new Error("cleanTimeLine must be an array");
-		// }
-
 		if (cleanTimeLine !== undefined && !Array.isArray(cleanTimeLine)) {
 			throw new Error("cleanTimeLine must be an array");
 		}
@@ -258,20 +254,6 @@ export const updateTimeline = async (
 		if (!existing) {
 			throw new Error("Itinerary not found");
 		}
-
-		// const updated = await Itinerary.findByIdAndUpdate(
-		// 	id,
-		// 	{
-		// 		$set: {
-		// 			tripTitle: tripTitle ?? existing.tripTitle,
-		// 			cleanTimeLine,
-		// 		},
-		// 	},
-		// 	{ new: true },
-		// )
-		// 	.populate("userId")
-		// 	.populate("extractedData.mediaId")
-		// 	.lean();
 
 		const updated = await Itinerary.findByIdAndUpdate(
 			{

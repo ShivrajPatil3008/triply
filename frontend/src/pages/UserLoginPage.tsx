@@ -40,8 +40,8 @@ export default function UserLoginPage() {
 			<div className="w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-6 text-left">
 				{/* HEADER */}
 				<div className="text-center mb-6">
-					<h2 className="text-xl font-semibold text-white">Login</h2>
-					<p className="text-sm text-gray-400 mt-1">Enter your credentials</p>
+					<h2 className="text-base font-semibold text-white">Login</h2>
+					<p className="text-base text-gray-400 mt-1">Enter your credentials</p>
 				</div>
 
 				{/* FORM */}
@@ -80,9 +80,9 @@ export default function UserLoginPage() {
 							<button
 								type="button"
 								onClick={() => setShowPassword(!showPassword)}
-								className="absolute right-3 top-3 text-gray-400 cursor-pointer"
+								className="absolute right-4 top-4 text-gray-400 cursor-pointer"
 							>
-								{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+								{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
 							</button>
 						</div>
 
@@ -106,7 +106,7 @@ transition  text-white disabled:opacity-60 mb-6 cursor-pointer"
 				</form>
 
 				{/* FOOTER */}
-				<p className="text-center text-xs mt-5 text-gray-400">
+				<p className="text-center text-base mt-5 text-gray-400">
 					Don’t have an account?{" "}
 					<Link to="/register" className="text-blue-400">
 						Register

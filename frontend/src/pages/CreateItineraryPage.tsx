@@ -79,29 +79,34 @@ export default function CreateItineraryPage() {
 	};
 
 	return (
-		<div className="relative min-h-screen flex items-center justify-center bg-[#0b0f19] px-4">
+		<div className="relative min-h-screen flex items-start md:items-center justify-center bg-[#0b0f19] px-4 py-6 md:py-10 overflow-x-hidden">
 			<button
 				onClick={() => navigate("/dashboard")}
-				className="absolute top-4 right-4 px-3 py-2 text-xs bg-[#111827] border border-gray-700 rounded hover:bg-gray-800"
+				className="absolute top-3 right-3 md:top-4 md:right-4 px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm bg-[#111827] border border-gray-700 rounded-md hover:bg-gray-800 transition"
 			>
 				← Back to Dashboard
 			</button>
-			<div className="w-full max-w-xl bg-[#111827] border border-gray-700 rounded-xl p-6">
-				<div className="text-center mb-6">
-					<h2 className="text-xl font-semibold text-white">Create Itinerary</h2>
-					<p className="text-sm text-gray-400 mt-1">
+
+			<div className="w-full max-w-xl bg-[#111827] border border-gray-700 rounded-xl p-4 md:p-6 max-h-[90vh] overflow-y-auto">
+				<div className="text-left md:text-center mb-4 md:mb-6">
+					<h2 className="text-lg md:text-xl font-semibold text-white">
+						Create Itinerary
+					</h2>
+					<p className="text-xs md:text-sm text-gray-400 mt-1">
 						Upload documents to generate AI trip plan
 					</p>
 				</div>
 
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 					<div className="flex flex-col gap-2">
-						<label className="text-sm text-gray-400">Trip Title</label>
+						<label className="text-xs md:text-sm text-gray-400 text-left">
+							Trip Title
+						</label>
 						<input
 							{...register("tripTitle", {
 								required: "Trip title is required",
 							})}
-							className="w-full px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
+							className="w-full px-3 py-2 text-sm rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
 							placeholder="Summer Trip"
 						/>
 						{errors.tripTitle && (
@@ -110,7 +115,7 @@ export default function CreateItineraryPage() {
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<label className="text-sm text-gray-400">
+						<label className="text-xs md:text-sm text-gray-400 text-left">
 							Upload Documents (Images / PDF)
 						</label>
 
@@ -126,7 +131,7 @@ export default function CreateItineraryPage() {
 									setPreviewFiles(Array.from(e.target.files));
 								}
 							}}
-							className="w-full text-white bg-[#0b0f19] border border-gray-700 p-2 rounded-md"
+							className="w-full text-sm text-white bg-[#0b0f19] border border-gray-700 p-2 rounded-md"
 						/>
 
 						{errors.files && (
@@ -136,9 +141,8 @@ export default function CreateItineraryPage() {
 						)}
 					</div>
 
-					{/* PREVIEW */}
 					{previewFiles.length > 0 && (
-						<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+						<div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3 overflow-x-hidden">
 							{previewFiles.map((file, index) => {
 								const isImage = file.type.startsWith("image/");
 								const url = URL.createObjectURL(file);
@@ -146,7 +150,7 @@ export default function CreateItineraryPage() {
 								return (
 									<div
 										key={index}
-										className="relative bg-[#0b0f19] border border-gray-700 rounded-md p-2"
+										className="relative bg-[#0b0f19] border border-gray-700 rounded-md p-2 overflow-hidden"
 									>
 										<button
 											type="button"
@@ -160,15 +164,15 @@ export default function CreateItineraryPage() {
 											<img
 												src={url}
 												alt="preview"
-												className="w-full h-24 object-cover rounded"
+												className="w-full h-20 md:h-24 object-cover rounded"
 											/>
 										) : (
-											<div className="w-full h-24 flex items-center justify-center text-gray-300 text-xs">
+											<div className="w-full h-20 md:h-24 flex items-center justify-center text-gray-300 text-xs">
 												PDF
 											</div>
 										)}
 
-										<p className="text-[10px] text-gray-400 mt-1 truncate">
+										<p className="text-[10px] md:text-xs text-gray-400 mt-1 truncate text-left">
 											{file.name}
 										</p>
 									</div>
@@ -180,9 +184,7 @@ export default function CreateItineraryPage() {
 					<button
 						type="submit"
 						disabled={isLoading}
-						className="w-full py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600
-hover:from-purple-500 hover:via-purple-400 hover:to-fuchsia-500
-transition text-white disabled:opacity-60 cursor-pointer"
+						className="w-full py-2 md:py-2.5 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 hover:from-purple-500 hover:via-purple-400 hover:to-fuchsia-500 transition text-white text-sm md:text-base disabled:opacity-60"
 					>
 						{isLoading ? "Generating..." : "Generate Itinerary"}
 					</button>
@@ -191,7 +193,7 @@ transition text-white disabled:opacity-60 cursor-pointer"
 
 			{showModal && (
 				<div className="fixed inset-0 bg-black/70 flex items-center justify-center px-4">
-					<div className="bg-[#111827] border border-gray-700 rounded-xl p-6 text-center max-w-sm w-full">
+					<div className="bg-[#111827] border border-gray-700 rounded-xl p-5 md:p-6 text-center max-w-sm w-full">
 						<div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-500 mx-auto mb-4" />
 
 						<h3 className="text-white font-semibold">Processing Your Trip</h3>

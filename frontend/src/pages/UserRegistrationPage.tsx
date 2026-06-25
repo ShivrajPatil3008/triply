@@ -83,11 +83,11 @@ export default function UserRegistrationPage() {
 
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4">
-			<div className="w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-6 text-left">
+			<div className="w-full max-w-md sm:max-w-lg md:max-w-xl bg-[#111827] border border-gray-700 rounded-xl p-6 text-left overflow-y-auto max-h-[90vh]">
 				{/* HEADER */}
 				<div className="text-center mb-6">
 					<h2 className="text-xl font-semibold text-white">Register</h2>
-					<p className="text-sm text-gray-400 mt-1">Create your account</p>
+					<p className="text-base text-gray-400 mt-1">Create your account</p>
 				</div>
 
 				{/* AVATAR */}
@@ -125,7 +125,7 @@ export default function UserRegistrationPage() {
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 					{/* USERNAME */}
 					<div>
-						<label className="text-sm text-gray-400">Username</label>
+						<label className="text-base text-gray-400">Username</label>
 						<input
 							{...register("userName", { required: "Required" })}
 							className="w-full mt-1 px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
@@ -140,7 +140,7 @@ export default function UserRegistrationPage() {
 
 					{/* EMAIL */}
 					<div>
-						<label className="text-sm text-gray-400">Email</label>
+						<label className="text-base text-gray-400">Email</label>
 						<input
 							{...register("email", { required: "Required" })}
 							className="w-full mt-1 px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
@@ -150,7 +150,7 @@ export default function UserRegistrationPage() {
 
 					{/* PHONE */}
 					<div>
-						<label className="text-sm text-gray-400">Phone</label>
+						<label className="text-base text-gray-400">Phone</label>
 						<input
 							{...register("phone", { required: "Required" })}
 							className="w-full mt-1 px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
@@ -159,7 +159,7 @@ export default function UserRegistrationPage() {
 
 					{/* ADDRESS */}
 					<div>
-						<label className="text-sm text-gray-400">Address</label>
+						<label className="text-base text-gray-400">Address</label>
 						<input
 							{...register("address", { required: "Required" })}
 							className="w-full mt-1 px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
@@ -182,7 +182,7 @@ export default function UserRegistrationPage() {
 
 					{/* PASSWORD */}
 					<div>
-						<label className="text-sm text-gray-400">Password</label>
+						<label className="text-base text-gray-400">Password</label>
 						<div className="relative">
 							<input
 								{...register("password", { required: "Required" })}
@@ -192,16 +192,16 @@ export default function UserRegistrationPage() {
 							<button
 								type="button"
 								onClick={() => setShowPassword(!showPassword)}
-								className="absolute right-4 top-4 text-gray-400"
+								className="absolute right-4 top-5 text-gray-400"
 							>
-								{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+								{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
 							</button>
 						</div>
 					</div>
 
 					{/* CONFIRM PASSWORD */}
 					<div>
-						<label className="text-sm text-gray-400">Confirm Password</label>
+						<label className="text-base text-gray-400">Confirm Password</label>
 						<div className="relative">
 							<input
 								{...register("confirmPassword", {
@@ -214,21 +214,31 @@ export default function UserRegistrationPage() {
 							<button
 								type="button"
 								onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-								className="absolute right-4 top-4 text-gray-400"
+								className="absolute right-4 top-5 text-gray-400"
 							>
-								{showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+								{showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
 							</button>
 						</div>
 					</div>
 
 					{/* SUBMIT */}
-					<button
-						type="submit"
-						disabled={isLoading}
-						className="w-full py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white"
-					>
-						{isLoading ? "Registering..." : "Register"}
-					</button>
+					<div className="flex flex-col sm:flex-row gap-3">
+						<button
+							type="submit"
+							disabled={isLoading}
+							className="w-full py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white cursor-pointer"
+						>
+							{isLoading ? "Registering..." : "Register"}
+						</button>
+
+						<button
+							type="button"
+							onClick={() => navigate("/")}
+							className="w-full py-2 rounded-lg bg-gray-700 text-white hover:bg-gray-600 transition cursor-pointer"
+						>
+							Cancel
+						</button>
+					</div>
 				</form>
 			</div>
 		</div>

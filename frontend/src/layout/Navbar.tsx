@@ -114,10 +114,12 @@ export default function Navbar() {
 	return (
 		<>
 			{/* NAVBAR */}
-			<div className="w-full bg-[#111827] border-b border-gray-700 px-4 py-3 flex items-center justify-between">
-				<h1 className="text-white font-semibold">TripLy</h1>
+			<div className="w-full bg-[#111827] border-b border-gray-700 px-4 md:px-8 py-3 md:py-4 flex items-center justify-between h-16 md:h-20">
+				<h1 className="text-white font-semibold text-lg md:text-xl tracking-wide">
+					TripLy
+				</h1>
 
-				<div className="flex items-center gap-3">
+				<div className="flex items-center gap-2 md:gap-4">
 					{/* AVATAR (smaller) */}
 					<img
 						src={
@@ -126,13 +128,13 @@ export default function Navbar() {
 								: "https://cdn-icons-png.flaticon.com/512/847/847969.png"
 						}
 						onClick={() => setOpen(true)}
-						className="w-14 h-14 rounded-full object-cover border border-gray-600 cursor-pointer"
+						className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-gray-600 cursor-pointer hover:scale-105 transition"
 					/>
 
 					{/* LOGOUT */}
 					<button
 						onClick={handleLogout}
-						className="flex items-center gap-2 px-4 py-2 rounded-md bg-red-600 text-white text-sm"
+						className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-md bg-transparent text-gray-300 hover:text-white hover:bg-gray-800 text-sm transition cursor-pointer"
 					>
 						<LogOut size={16} />
 						Logout
@@ -143,7 +145,7 @@ export default function Navbar() {
 			{/* MODAL */}
 			{open && (
 				<div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4">
-					<div className="w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-5 text-left">
+					<div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-[#111827] border border-gray-700 rounded-xl p-5 text-left max-h-[90vh] overflow-y-auto">
 						<h2 className="text-white text-lg mb-4">Update Profile</h2>
 
 						{/* AVATAR (pencil TOP only) */}
@@ -161,7 +163,7 @@ export default function Navbar() {
 									avatarPreview ||
 									"https://cdn-icons-png.flaticon.com/512/847/847969.png"
 								}
-								className="w-40 h-40 rounded-full object-cover border"
+								className="w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full object-cover border"
 							/>
 
 							<input
@@ -262,18 +264,18 @@ export default function Navbar() {
 							</div>
 
 							{/* ACTIONS */}
-							<div className="flex gap-2 pt-2">
+							<div className="flex flex-col md:flex-row gap-2 pt-2">
 								<button
 									type="button"
 									onClick={() => setOpen(false)}
-									className="w-1/2 py-3 bg-gray-700 text-white rounded-md"
+									className="w-1/2 py-3 bg-gray-700 text-white rounded-md cursor-pointer"
 								>
 									Cancel
 								</button>
 
 								<button
 									type="submit"
-									className="w-1/2 py-3 bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white rounded-md"
+									className="w-full md:w-1/2 py-3 bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white rounded-md cursor-pointer"
 								>
 									Update
 								</button>

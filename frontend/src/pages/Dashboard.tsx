@@ -35,7 +35,6 @@ export default function Dashboard() {
 		search: debouncedSearch,
 	});
 
-	/* debounce search */
 	useEffect(() => {
 		const t = setTimeout(() => {
 			setDebouncedSearch(search);
@@ -51,66 +50,67 @@ export default function Dashboard() {
 	const itineraries = data?.data || [];
 
 	return (
-		<div className="min-h-screen bg-[#0b0f19] text-white px-4 py-6">
+		<div className="min-h-screen bg-[#0b0f19] text-white px-3 md:px-6 py-4 md:py-6">
 			{/* HEADER */}
-			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-				<h1 className="text-xl font-semibold">Your Itineraries</h1>
+			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3 mb-4 md:mb-5">
+				<h1 className="text-lg md:text-xl font-semibold">Your Itineraries</h1>
 
 				<button
 					onClick={() => navigate("/create-itinerary")}
-					className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600"
+					className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-sm md:text-base"
 				>
-					<Plus size={16} /> Add Itinerary
+					<Plus size={16} /> Add Trip
 				</button>
 			</div>
 
 			{/* SEARCH */}
-			<div className="flex flex-col md:flex-row gap-3 mb-6">
+			<div className="flex flex-col md:flex-row gap-2 mb-4 md:mb-5">
 				<input
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
-					placeholder="Search trip by trip Code or Trip Title..."
-					className="flex-1 px-3 py-2 rounded-md bg-[#111827] border border-gray-700 outline-none"
+					placeholder="Search trip by name or by trip code..."
+					className="flex-1 px-3 py-2 rounded-md bg-[#111827] border border-gray-700 outline-none text-sm"
 				/>
 			</div>
 
 			{/* LIST */}
 			{isLoading ? (
-				<p className="text-gray-400">Loading itineraries...</p>
+				<p className="text-gray-400 text-sm">Loading...</p>
 			) : (
-				<div className="flex flex-col gap-3">
+				<div className="flex flex-col gap-2 md:gap-2.5">
 					{itineraries.map((item) => (
 						<div
 							key={item._id}
-							className="flex items-center justify-between p-4 rounded-xl 
+							className="flex items-center justify-between p-3 rounded-lg 
 							bg-gradient-to-r from-[#111827] to-[#0b0f19] 
-							border border-gray-700 shadow-lg hover:shadow-purple-900/20 transition"
+							border border-gray-700 shadow-sm hover:shadow-purple-900/20 transition"
 						>
 							{/* LEFT */}
-							<div>
-								<h2 className="text-sm font-medium">{item.tripTitle}</h2>
-								<p className="text-xs text-gray-400 text-left">
-									{/* {new Date(item.createdAt!).toLocaleDateString()} */}
+							<div className="min-w-0">
+								<h2 className="text-sm text-left font-medium truncate">
+									{item.tripTitle}
+								</h2>
+								<p className="text-xs text-left text-gray-400 truncate">
 									{item.tripCode}
 								</p>
 							</div>
 
 							{/* ACTIONS */}
-							<div className="flex items-center gap-3">
+							<div className="flex items-center gap-2">
 								<button onClick={() => navigate(`/view-itinerary/${item._id}`)}>
-									<Eye size={18} />
+									<Eye size={20} />
 								</button>
 
 								<button onClick={() => setUpdateId(item._id ?? null)}>
-									<Pencil size={18} />
+									<Pencil size={20} />
 								</button>
 
 								<button onClick={() => setDeleteId(item._id ?? null)}>
-									<Trash2 size={18} />
+									<Trash2 size={20} />
 								</button>
 
 								<button onClick={() => setShareCode(item.tripCode ?? null)}>
-									<Share2 size={18} />
+									<Share2 size={20} />
 								</button>
 							</div>
 						</div>
@@ -118,52 +118,50 @@ export default function Dashboard() {
 				</div>
 			)}
 
-			{/* FLOATING HISTORY BUTTON */}
-
+			{/* FLOATING BUTTON */}
 			<button
 				onClick={() => setViewHistory(true)}
 				className="
-	fixed bottom-6 right-6
-	w-16 h-16
-	rounded-full
-	bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600
-	flex items-center justify-center
-	shadow-lg
-	animate-bounce
-	hover:scale-110
-	transition
-	"
+					fixed bottom-5 right-5
+					w-12 h-12 md:w-14 md:h-14
+					rounded-full
+					bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600
+					flex items-center justify-center
+					shadow-md
+					hover:scale-105 transition
+				"
 			>
-				<Plane size={28} />
+				<Plane size={22} />
 			</button>
 
-			{/* delete modal */}
-
+			{/* DELETE MODAL */}
 			{deleteId && (
-				<div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-					<div className="bg-[#111827] p-5 rounded-lg border border-gray-700 w-[300px]">
-						<p className="text-sm mb-4">
-							Are you sure you want to delete this itinerary?
+				<div className="fixed inset-0 bg-black/70 flex items-center justify-center px-4">
+					<div className="w-full max-w-sm md:max-w-md bg-[#111827] border border-gray-700 rounded-xl p-5 shadow-2xl flex flex-col gap-4">
+						{/* TEXT */}
+						<p className="text-sm md:text-base text-gray-300 text-center mb-5">
+							Delete this itinerary?
 						</p>
 
-						<div className="flex justify-end gap-3">
+						{/* BUTTONS */}
+						<div className="flex items-center justify-center gap-3">
 							<button
-								className="px-3 py-1 text-sm border border-gray-600 rounded"
+								className="px-4 py-2 text-sm border border-gray-600 rounded-md hover:bg-gray-800 transition"
 								onClick={() => setDeleteId(null)}
 							>
 								No
 							</button>
 
 							<button
-								className="px-3 py-1 text-sm bg-red-600 rounded"
+								className="px-4 py-2 text-sm bg-gray-700 hover:bg-gray-600 rounded-md transition"
 								onClick={async () => {
 									if (!deleteId) return;
 
 									try {
 										await deleteItinerary(deleteId).unwrap();
-										toast.success("Deleted successfully");
-									} catch (err) {
-										toast.error("Delete failed");
+										toast.success("Deleted");
+									} catch {
+										toast.error("Failed");
 									} finally {
 										setDeleteId(null);
 									}
@@ -176,40 +174,30 @@ export default function Dashboard() {
 				</div>
 			)}
 
-			{/* update modal */}
-
+			{/* UPDATE MODAL */}
 			{updateId && (
 				<div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4">
-					<div className="relative w-[50%] min-h-[50%] bg-[#111827] border border-gray-700 rounded-xl p-8 flex flex-col justify-center">
-						{/* close button */}
+					<div className="relative w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-5 md:p-6">
 						<button
 							onClick={() => setUpdateId(null)}
-							className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+							className="absolute top-1 right-1 text-gray-400 text-xl bg-gray-800 rounded-full p-2"
 						>
-							×
+							<X size={15} />
 						</button>
 
-						<div className="text-center mb-8">
-							<h2 className="text-white text-2xl font-semibold">
-								Update Itinerary
-							</h2>
+						<h2 className="text-center text-lg font-semibold mb-4">Update</h2>
 
-							<p className="text-gray-400 mt-2">
-								Choose what you want to update
-							</p>
-						</div>
-
-						<div className="flex gap-5 justify-center">
+						<div className="flex flex-col md:flex-row gap-2">
 							<button
 								onClick={() => navigate(`/update-itinerary/${updateId}`)}
-								className="flex-1 py-3 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white"
+								className="flex-1 py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-sm"
 							>
-								Re-upload Documents
+								Re-Upload Docs
 							</button>
 
 							<button
 								onClick={() => navigate(`/update-time-line/${updateId}`)}
-								className="flex-1 py-3 rounded-lg border border-gray-600 text-white hover:bg-gray-800"
+								className="flex-1 py-2 rounded-lg border border-gray-600 text-sm"
 							>
 								Update Timeline
 							</button>
@@ -218,40 +206,38 @@ export default function Dashboard() {
 				</div>
 			)}
 
-			{/* shareCode */}
-
+			{/* SHARE MODAL */}
 			{shareCode && (
-				<div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4">
-					<div className="relative w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-6">
+				<div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4">
+					<div className="relative w-full max-w-lg min-h-[180px] bg-[#0f172a] border border-gray-600 rounded-xl p-6 shadow-2xl flex flex-col gap-5">
+						{/* CLOSE BUTTON */}
 						<button
 							onClick={() => setShareCode(null)}
-							className="absolute right-4 top-4 text-gray-400 hover:text-white"
+							className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 transition"
 						>
-							<X size={20} />
+							<X size={18} />
 						</button>
 
-						<h2 className="text-white text-xl font-semibold mb-2">
-							Share Trip
-						</h2>
+						{/* TITLE */}
+						<h2 className="text-lg font-semibold mb-2">Share Trip Code</h2>
 
-						<p className="text-gray-400 text-sm mb-5">
-							Share this trip code with your loved ones
+						<p className="text-xs text-gray-400 mb-3">
+							Share this code with others so they can view your itinerary.
 						</p>
-
+						{/* INPUT + COPY */}
 						<div className="flex gap-2">
 							<input
 								readOnly
 								value={shareCode}
-								className="flex-1 bg-[#0b0f19] border border-gray-700 rounded px-3 py-2 text-white"
+								className="flex-1 bg-[#0b0f19] border border-gray-700 rounded-md px-3 py-2 text-sm text-white"
 							/>
 
 							<button
 								onClick={() => {
 									navigator.clipboard.writeText(shareCode);
-
-									toast.success("Trip code copied");
+									toast.success("Copied");
 								}}
-								className="px-4 bg-purple-600 rounded"
+								className="px-3 bg-gray-700 hover:bg-gray-600 rounded-md transition"
 							>
 								<Copy size={18} />
 							</button>
@@ -260,56 +246,36 @@ export default function Dashboard() {
 				</div>
 			)}
 
-			{/* VIEW HISTORY MODAL */}
-
+			{/* HISTORY MODAL */}
 			{viewHistory && (
 				<div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4">
-					<div className="relative w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-6">
+					<div className="relative w-full max-w-md bg-[#111827] border border-gray-700 rounded-xl p-5">
 						<button
 							onClick={() => setViewHistory(false)}
-							className="absolute right-4 top-4 text-gray-400 hover:text-white"
+							className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 transition"
 						>
-							<X size={20} />
+							<X size={18} />
 						</button>
+						<h2 className="text-lg font-semibold">Past Trip Code</h2>
 
-						<h2 className="text-white text-xl font-semibold">
-							View Travel History
-						</h2>
-
-						<p className="text-gray-400 text-sm mt-2 mb-5">
-							Paste your loved one's trip code
+						<p className="text-xs text-gray-400 mt-1 mb-3">
+							Enter a valid trip code to view travel history details.
 						</p>
 
 						<input
 							value={historyCode}
 							onChange={(e) => setHistoryCode(e.target.value)}
-							placeholder="Enter trip code..."
-							className="
-			w-full
-			bg-[#0b0f19]
-			border border-gray-700
-			rounded-md
-			px-3 py-2
-			text-white
-			"
+							className="w-full mt-3 bg-[#0b0f19] border border-gray-700 rounded px-3 py-2 text-sm"
 						/>
 
 						<button
 							onClick={() => {
 								if (!historyCode) return;
-
 								navigate(`/trip-code/${historyCode}`);
 							}}
-							className="
-			mt-5
-			w-full
-			py-2
-			rounded-lg
-			bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600
-			text-white
-			"
+							className="mt-3 w-full py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-sm"
 						>
-							View Trip
+							View
 						</button>
 					</div>
 				</div>

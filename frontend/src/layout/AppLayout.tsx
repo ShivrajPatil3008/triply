@@ -1,7 +1,6 @@
-// layouts/AppLayout.tsx
-
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
+import ScrollToTop from "./ScrollToTop";
 
 export default function AppLayout() {
 	return (
@@ -9,6 +8,8 @@ export default function AppLayout() {
 			<Navbar />
 
 			<main className="p-4">
+				<ScrollToTop />
+
 				<Outlet />
 			</main>
 		</div>

@@ -124,15 +124,15 @@ export default function UpdateItineraryPage() {
 	}
 
 	return (
-		<div className="relative min-h-screen flex items-center justify-center bg-[#0b0f19] px-4">
+		<div className="relative min-h-screen flex items-start md:items-center justify-center bg-[#0b0f19] px-3 py-6 md:py-10 overflow-x-hidden overflow-y-auto">
 			<button
 				onClick={() => navigate("/dashboard")}
-				className="absolute top-4 right-4 px-3 py-2 text-xs bg-[#111827] border border-gray-700 rounded hover:bg-gray-800 text-white"
+				className="absolute top-3 right-3 md:top-4 md:right-4 px-3 py-1.5 text-xs md:text-sm bg-[#111827] border border-gray-700 rounded-md hover:bg-gray-800 transition cursor-pointer z-10 cursor-pointer"
 			>
 				← Back to Dashboard
 			</button>
 
-			<div className="w-full max-w-xl bg-[#111827] border border-gray-700 rounded-xl p-6">
+			<div className="w-full max-w-xl bg-[#111827] border border-gray-700 rounded-xl p-4 md:p-6 max-h-[90vh] overflow-y-auto text-left">
 				<div className="text-center mb-6">
 					<h2 className="text-xl font-semibold text-white">Update Itinerary</h2>
 
@@ -147,7 +147,7 @@ export default function UpdateItineraryPage() {
 
 						<input
 							{...register("tripTitle")}
-							className="w-full px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none"
+							className="w-full px-3 py-2 rounded-md bg-[#0b0f19] border border-gray-700 text-white outline-none text-sm text-left"
 						/>
 					</div>
 
@@ -168,7 +168,7 @@ export default function UpdateItineraryPage() {
 									setPreviewFiles(Array.from(e.target.files));
 								}
 							}}
-							className="w-full text-white bg-[#0b0f19] border border-gray-700 p-2 rounded-md"
+							className="w-full text-white bg-[#0b0f19] border border-gray-700 p-2 rounded-md text-sm overflow-hidden"
 						/>
 
 						{errors.files && (
@@ -179,7 +179,7 @@ export default function UpdateItineraryPage() {
 					</div>
 
 					{previewFiles.length > 0 && (
-						<div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+						<div className="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-3">
 							{previewFiles.map((file, index) => {
 								const isImage = file.type.startsWith("image/");
 
@@ -188,7 +188,7 @@ export default function UpdateItineraryPage() {
 								return (
 									<div
 										key={index}
-										className="relative bg-[#0b0f19] border border-gray-700 rounded-md p-2"
+										className="relative bg-[#0b0f19] border border-gray-700 rounded-md p-2 overflow-hidden"
 									>
 										<button
 											type="button"
@@ -201,15 +201,15 @@ export default function UpdateItineraryPage() {
 										{isImage ? (
 											<img
 												src={url}
-												className="w-full h-24 object-cover rounded"
+												className="w-full h-20 md:h-24 object-cover rounded"
 											/>
 										) : (
-											<div className="w-full h-24 flex items-center justify-center text-gray-300 text-xs">
+											<div className="w-full h-20 md:h-24 flex items-center justify-center text-gray-300 text-xs">
 												PDF
 											</div>
 										)}
 
-										<p className="text-[10px] text-gray-400 mt-1 truncate">
+										<p className="text-[10px] text-gray-400 mt-1 truncate text-left">
 											{file.name}
 										</p>
 									</div>
@@ -221,7 +221,7 @@ export default function UpdateItineraryPage() {
 					<button
 						type="submit"
 						disabled={isLoading}
-						className="w-full py-2 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white disabled:opacity-60"
+						className="w-full py-2 md:py-2.5 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-fuchsia-600 text-white disabled:opacity-60 text-sm"
 					>
 						{isLoading ? "Updating..." : "Update Itinerary"}
 					</button>

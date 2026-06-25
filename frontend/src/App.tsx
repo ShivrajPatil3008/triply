@@ -1,6 +1,7 @@
 import { lazy, Suspense, useMemo } from "react";
 
-import "./App.css";
+// import "./App.css";
+import "./index.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -80,7 +81,7 @@ function App() {
 					pauseOnHover={true}
 					draggable={true}
 					theme="dark"
-					className="toast-container-custom"
+					className="toast-container-custom toast-small"
 				/>
 				<ServerGate>
 					<Suspense fallback={<Loading />}>

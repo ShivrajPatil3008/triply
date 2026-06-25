@@ -94,10 +94,7 @@ export default function UserRegistrationPage() {
 				<div className="flex justify-center mb-6 relative">
 					<div className="relative w-24 h-24">
 						<img
-							src={
-								avatarPreview ||
-								"https://cdn-icons-png.flaticon.com/512/847/847969.png"
-							}
+							src={avatarPreview || "/favicon.png"}
 							alt="avatar"
 							className="w-24 h-24 rounded-full object-cover border border-gray-600"
 						/>

@@ -125,7 +125,7 @@ export default function Navbar() {
 						src={
 							user?.avatar && "fileLocation" in user.avatar
 								? user.avatar.fileLocation
-								: "https://cdn-icons-png.flaticon.com/512/847/847969.png"
+								: "/favicon.png"
 						}
 						onClick={() => setOpen(true)}
 						className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover border border-gray-600 cursor-pointer hover:scale-105 transition"
@@ -159,10 +159,7 @@ export default function Navbar() {
 							</button>
 
 							<img
-								src={
-									avatarPreview ||
-									"https://cdn-icons-png.flaticon.com/512/847/847969.png"
-								}
+								src={avatarPreview || "/favicon.png"}
 								className="w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full object-cover border"
 							/>
 

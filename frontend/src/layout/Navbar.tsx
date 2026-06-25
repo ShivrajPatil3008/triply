@@ -58,7 +58,7 @@ export default function Navbar() {
 		setAvatarPreview(
 			user.avatar && "fileLocation" in user.avatar
 				? user.avatar.fileLocation
-				: null,
+				: "/favicon.png",
 		);
 	}, [user, reset]);
 
